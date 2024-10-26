@@ -1,4 +1,4 @@
-# DockerClassroom
+![image](https://github.com/user-attachments/assets/bb7610ad-0f2a-400f-8d7a-b1a729a4324c)# DockerClassroom
 
 - The Basics.
   1) Your First Linux Containers.
@@ -33,7 +33,43 @@
      - Создание Dockerfile для образа с NodeJS: ![image](https://github.com/user-attachments/assets/7482ddc6-0658-4d7f-8eb3-bc4257732178)
      - Создание образа на основе Dockerfile: ```docker image build -t hello:v0.1 .``` ![image](https://github.com/user-attachments/assets/d919f650-ebd5-44e6-8677-0849c3dbde93)
      - Запуск контейнера: ```docker container run hello:v0.1``` ![image](https://github.com/user-attachments/assets/062cf9a5-263a-4fe5-994c-8961d1ab8a20)
+     - Просмотреть список промежуточных образов: ```image history 070c``` ![image](https://github.com/user-attachments/assets/7900b7ce-60d9-4d70-95d9-05d840a83ed0)
+     - Создание образа с помощью Dockerfile после внесения изменений: ```docker image build -t hello:v0.2 .``` ![image](https://github.com/user-attachments/assets/2f2b4de2-09d1-49f3-ac76-908b871869d5)
+     - Просмотр информации об образе alpine: ```docker image inspect alpine``` ![image](https://github.com/user-attachments/assets/9ebbb309-1685-4f3a-b78e-4f7fa77e9997)
+     - Получение списка слоев отфильтровав предыдущую информацию: ```docker image inspect --format "{{ json .RootFS.Layers }}" alpine``` ![image](https://github.com/user-attachments/assets/9f35ddca-552c-4b85-a707-6836ddb896a8)
+     - Получение списка слоев образа hello: ```docker image inspect --format "{{ json .RootFS.Layers }}" 103a``` ![image](https://github.com/user-attachments/assets/acf20c3c-1813-4989-9dad-71872cdab361)
+  3) Deploy and Managing Multiple Containers.
+     - Инициализация Docker Swarm Mode в первом терминале: ```docker swarm init --advertise-addr $(hostname -i)``` ![image](https://github.com/user-attachments/assets/f53e3d9f-4435-44b0-a76d-0bd65893996b)
+     - Добавление рабочего узла во втором терминале: ```docker swarm join --token SWMTKN-1-22oxrwampkqolj9ze18gnr6z3nwvxw7ea1wzy04evvq2wt9h3p-a52621btg2z5lwuwogel3h42i 192.168.0.18:2377``` ![image](https://github.com/user-attachments/assets/111667df-d80e-43ed-a991-955e8d516911)
+     - Проверка количкства узло Swarm: ```docker node ls``` ![image](https://github.com/user-attachments/assets/3ee4cd86-2455-423c-bf84-69a09feb6b6f)
+     - Клонирование репозитория с приложением для голосования и переход в рабочую директорию в первом терминале: ```git clone https://github.com/docker/example-voting-app``` ![image](https://github.com/user-attachments/assets/81cbf1b4-bc09-4b5c-a5cc-62c651737c64)
+     - Посмотреть содержимое файла конфигурации Stack - группы служб: ```cat docker-stack.yml``` ![image](https://github.com/user-attachments/assets/b30b4fe0-ddff-4c0e-bdff-2d12ce87812b)
+     - Разворачивание стека приложения для голосвания: ```docker stack deploy --compose-file=docker-stack.yml voting_stack``` ![image](https://github.com/user-attachments/assets/c2d718bf-fc63-4867-98b4-5bfd079f9521)
+     - Просмотр запущенных сервисов: ```docker stack ls``` ![image](https://github.com/user-attachments/assets/2421feae-b5f2-4416-ba40-fb7e91053846)
+     - Просмотр детальной информации о каждом сервисе: ```docker stack services voting_stack``` ![image](https://github.com/user-attachments/assets/e84168c3-4436-4ec5-ba12-4d2f00616430)
+     - Просмотр сервисов службы для голосования: ```docker service ps voting_stack_vote``` ![image](https://github.com/user-attachments/assets/7bb01ce1-c08d-4f5d-b42e-11dba52f6c9f)
+     - Масштабирование количества служб до 5: ```docker service scale voting_stack_vote=5``` ![image](https://github.com/user-attachments/assets/3a8b84ba-cd2d-4a76-88e4-38ddc5eedec7)
+     - Просмотр сервисов службы для голосвания: ```docker stack services voting_stack``` ![image](https://github.com/user-attachments/assets/311b385a-5108-4de7-a56a-1cfaedac7a58)
+- Digging Deeper.
+  1) Seccomp profiles.
      - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
