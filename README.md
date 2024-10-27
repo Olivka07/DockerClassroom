@@ -1,5 +1,4 @@
-![image](https://github.com/user-attachments/assets/19ea4cbc-203b-4a3d-af3d-07ba9fbda981)![image](https://github.com/user-attachments/assets/40c41399-d51c-4bcf-897f-f1e628b4f86c)![image](https://github.com/user-attachments/assets/41afd1dc-f324-444d-b21d-a997b35fd998)![image](https://github.com/user-attachments/assets/bb7610ad-0f2a-400f-8d7a-b1a729a4324c)# DockerClassroom
-
+# DockerClassroom
 
 ## Getting Started Walk-through for IT Pros and System Administrators
 - The Basics.
@@ -184,7 +183,71 @@
      - ```git checkout step1 && tree``` ![image](https://github.com/user-attachments/assets/dd1c45de-fc2d-4639-b667-956715c0fcd1)
      - ```cat Dockerfile``` ![image](https://github.com/user-attachments/assets/6c13196d-effe-4c62-99e0-46f147b3b316)
      - ```docker image build -t linkextractor:step1 .``` ![image](https://github.com/user-attachments/assets/04610472-715b-4427-91cb-685f87e19ee7)
-     - ```docker container run -it --rm linkextractor:step1 http://example.com/``` 
+     - ```docker container run -it --rm linkextractor:step1 http://example.com/``` ![image](https://github.com/user-attachments/assets/84380a6d-5cdc-4a7b-8bd8-51082af30beb)
+     - ```docker container run -it --rm linkextractor:step1 https://training.play-with-docker.com/``` ![image](https://github.com/user-attachments/assets/6b8ae664-161e-4a39-8504-c4eded95f5a2)
+     - ```git checkout step2 && cat linkextractor.py``` ![image](https://github.com/user-attachments/assets/8683330f-aa54-48e9-a66e-308bedc61872)
+     - ```docker image build -t linkextractor:step2 .``` ![image](https://github.com/user-attachments/assets/66d2778f-55cf-4e19-9616-3c36c28a6a71)
+     - ```docker container run -it --rm linkextractor:step2 https://training.play-with-docker.com/``` ![image](https://github.com/user-attachments/assets/0a2d7745-e71e-476b-bfb2-9a296f767a0e)
+     - ```docker container run -it --rm linkextractor:step1 https://training.play-with-docker.com/``` ![image](https://github.com/user-attachments/assets/be3bb3f4-39fb-430c-ba76-d0bfaa920244)
+     - ```git checkout step3 && cat Dockerfile``` ![image](https://github.com/user-attachments/assets/3b084ef3-5888-4a5b-ba44-61f7700c8c22)
+     - ```cat main.py``` ![image](https://github.com/user-attachments/assets/2528e845-761c-455e-bff1-949004bed864)
+     - ```docker image build -t linkextractor:step3 .``` ![image](https://github.com/user-attachments/assets/8d6edccb-a29c-4c48-a3e4-c51f05c0db86)
+     - ```docker container run -d -p 5000:5000 --name=linkextractor linkextractor:step3``` ![image](https://github.com/user-attachments/assets/19c89481-4c1c-4b9f-bad5-367ad1fefa42)
+     - ```curl -i http://localhost:5000/api/http://example.com/``` ![image](https://github.com/user-attachments/assets/c8d6e1d2-5c68-4602-86a7-f8611067e252)
+     - ```docker container logs linkextractor``` ![image](https://github.com/user-attachments/assets/92eaccee-0203-4f24-9502-06ddb1e17f2f)
+     - ```git checkout step4 && cat docker-compose.yml``` ![image](https://github.com/user-attachments/assets/dde219dd-1ff5-4b8f-aa26-ba1f6510ae95)
+     - ```cat www/index.php``` ![image](https://github.com/user-attachments/assets/7c1d444b-5bd6-480a-ae7a-d69c74e0373a)
+     - ```docker-compose up -d --build``` ![image](https://github.com/user-attachments/assets/ef4a4fd6-40f1-4fc1-bcbf-95a637c572ae)
+     - ```curl -i http://localhost:5000/api/http://example.com/``` ![image](https://github.com/user-attachments/assets/a4b61cf7-df42-4154-af03-1a41ad846361)
+     - ```sed -i 's/Link Extractor/Super Link Extractor/g' www/index.php && git reset --hard && docker-compose down``` ![image](https://github.com/user-attachments/assets/19154b13-9610-4c38-9bef-bd85e7542395)
+     - ```git checkout step5 && cat www/Dockerfile && cat api/main.py``` ![image](https://github.com/user-attachments/assets/d24f334d-8b95-409c-a8a7-0d630e6f32c6)
+     - ```cat docker-compose.yml``` ![image](https://github.com/user-attachments/assets/efc5d7b3-3ff5-43b6-bdbd-420e3f2696f8)
+     - ```docker-compose up -d --build``` ![image](https://github.com/user-attachments/assets/e7f0b155-71ff-4084-b2c5-4e9da78f680b)
+     - ```docker-compose exec redis redis-cli monitor``` ![image](https://github.com/user-attachments/assets/b94d2d34-fae7-4eea-8c82-35e3fc760fc3)
+     - ```sed -i 's/Link Extractor/Super Link Extractor/g' www/index.php && git reset --hard && docker-compose down```
+     - ```git checkout step6 && cat api/linkextractor.rb``` ![image](https://github.com/user-attachments/assets/88190a6b-36b1-450c-95fb-453334aa9e97)
+     - ```cat api/Dockerfile && cat docker-compose.yml``` ![image](https://github.com/user-attachments/assets/fd673449-c61b-4a7a-b682-7c8be89ad261)
+     - ```docker-compose up -d --build``` ![image](https://github.com/user-attachments/assets/eb87cc6d-df69-42aa-ae58-64167b71b09e)
+     - ```curl -i http://localhost:4567/api/http://example.com/``` ![image](https://github.com/user-attachments/assets/e886dfb2-11f0-4b1b-8c95-065255f66bbf)
+     - ```docker-compose down``` ![image](https://github.com/user-attachments/assets/67da325d-2784-4d95-9765-1b2dedba1c4d)
+     - ```cat logs/extraction.log``` ![image](https://github.com/user-attachments/assets/f13d3bc5-d756-4ed1-aa5e-9e970adde0ff)
+  3) Deploying a Multi-Service App in Docker Swarm Mode.
+     - ```docker swarm init --advertise-addr $(hostname -i)``` ![image](https://github.com/user-attachments/assets/5eb06725-d754-423b-8fc8-3f44c2b8d645)
+     - ```docker node ls``` ![image](https://github.com/user-attachments/assets/8cc08d03-fa8e-4375-83e9-d1aa44504534)
+     - ```git clone https://github.com/docker/example-voting-app && cd example-voting-app``` ![image](https://github.com/user-attachments/assets/e788661a-73ba-4a83-895d-831eecf49b19)
+     - ```docker stack deploy --compose-file=docker-stack.yml voting_stack``` ![image](https://github.com/user-attachments/assets/26ded4ed-97d3-4299-905e-9e7ead7d3737)
+     - ```docker stack ls``` ![image](https://github.com/user-attachments/assets/1dc89253-ed9e-4d4a-9392-18275922e195)
+     - ```docker stack services voting_stack``` ![image](https://github.com/user-attachments/assets/0c977c84-b7ee-410c-8e62-ed88b9ec1c19)
+     - ```docker service ps voting_stack_vote``` ![image](https://github.com/user-attachments/assets/c2d8427d-b57b-4735-b4a7-afd024544a4a)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
