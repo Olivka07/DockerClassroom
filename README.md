@@ -1,5 +1,7 @@
 ![image](https://github.com/user-attachments/assets/19ea4cbc-203b-4a3d-af3d-07ba9fbda981)![image](https://github.com/user-attachments/assets/40c41399-d51c-4bcf-897f-f1e628b4f86c)![image](https://github.com/user-attachments/assets/41afd1dc-f324-444d-b21d-a997b35fd998)![image](https://github.com/user-attachments/assets/bb7610ad-0f2a-400f-8d7a-b1a729a4324c)# DockerClassroom
 
+
+## Getting Started Walk-through for IT Pros and System Administrators
 - The Basics.
   1) Your First Linux Containers.
      - Запуск контейнера на основе образа hello-world с помощью команды: '''docker container run hello-world''' ![image](https://github.com/user-attachments/assets/527f5910-20f3-4917-97d8-3d970cd25865)
@@ -127,6 +129,105 @@
      - ```docker service ps sleep-app``` ![image](https://github.com/user-attachments/assets/706d0805-96b4-4605-a20f-3a83072ad6c5)
      - ```docker service rm sleep-app``` ![image](https://github.com/user-attachments/assets/291e0144-cae4-4aac-a932-9f931dd61cfc)
      - ```docker swarm leave --force``` ![image](https://github.com/user-attachments/assets/28c00db9-7fce-4063-a768-0588b38fa68e)
+
+## Getting Started Walk-through for Developers
+- The Basics.
+  1) Docker for Beginners - Linux.
+     - Клонирование репозитория: ```git clone https://github.com/dockersamples/linux_tweet_app``` ![image](https://github.com/user-attachments/assets/d951213c-6a41-458e-af3b-945920f0cf96)
+     - Запуск контейнера на основе образа alpine с командой hostname: ```docker container run alpine hostname``` ![image](https://github.com/user-attachments/assets/a320758a-5e9d-4faa-b6f6-15263e4c7a50)
+     - Все контейнеры: ``` docker container ls --all``` ![image](https://github.com/user-attachments/assets/366bf106-8e6c-4009-871e-721078f1ccfb)
+     - ``` docker container run --interactive --tty --rm ubuntu bash``` ![image](https://github.com/user-attachments/assets/5a1a6df1-2960-4053-b759-25d1651647df)
+     - ```ls /``` ![image](https://github.com/user-attachments/assets/e37ea4f8-00f6-438b-a499-29b85b268186)
+     - Запущенные процессы: ```ps aux``` ![image](https://github.com/user-attachments/assets/d9043d02-3875-44ea-8d19-74c047eb0251)
+     - Версия дистрибутива Linux: ```cat /etc/issue``` ![image](https://github.com/user-attachments/assets/62879d42-014c-4e98-9785-d3d9e175a6de)
+     - ``` cat /etc/issue``` ![image](https://github.com/user-attachments/assets/fe2f6d78-702a-4dd3-8856-7473c6c4a2ff)
+     - Запуск контейнера на основе образа mysql: ``` docker container run \
+                                                   --detach \
+                                                   --name mydb \
+                                                   -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+                                                   mysql:latest
+                                                 ``` ![image](https://github.com/user-attachments/assets/f50d1e8d-b636-455c-8595-316a689083d2)
+     - ``` docker container ls``` ![image](https://github.com/user-attachments/assets/d26ecbc2-e6b1-4704-847b-5cf11f11fe5f)
+     - ```docker container logs mydb``` ![image](https://github.com/user-attachments/assets/bad7d95f-a2c3-4fea-bdda-608abce55c38)
+     - Процессы запущенные внутри контейнера: ```docker container top mydb``` ![image](https://github.com/user-attachments/assets/e1b3e65d-3bee-46f6-99f0-70762e2bcd5e)
+     - ```docker exec -it mydb mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version``` ![image](https://github.com/user-attachments/assets/9c0d582b-514a-45a6-8aef-331c43d12ab1)
+     - ```docker exec -it mydb sh``` ![image](https://github.com/user-attachments/assets/c730c660-45f2-47ab-8bec-63abe3f8f77c)
+     - ``` mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version``` ![image](https://github.com/user-attachments/assets/1a6c0943-1887-41e5-8d20-55188a41ad6e)
+     - ``` cd ~/linux_tweet_app``` ![image](https://github.com/user-attachments/assets/6fb47857-d332-4b57-8e21-8b5926ac101b)
+     - ```cat Dockerfile``` ![image](https://github.com/user-attachments/assets/da49b8fc-e124-48da-8a6c-533d9718e652)
+     - ```export DOCKERID=olivka07```![image](https://github.com/user-attachments/assets/972ceb50-0b80-499b-96e6-2cf09d8b794e)
+     - ```echo $DOCKERID``` ![image](https://github.com/user-attachments/assets/c15e7a06-342a-4873-9dbb-c52ab39df97f)
+     - ```docker image build --tag $DOCKERID/linux_tweet_app:1.0 .``` ![image](https://github.com/user-attachments/assets/a616b761-b1e3-4d9f-813f-ed38c893a88b)
+     - ``` docker container run --detach --publish 80:80 --name linux_tweet_app $DOCKERID/linux_tweet_app:1.0``` ![image](https://github.com/user-attachments/assets/418f13dc-1021-4367-88d3-194010f823b4)
+     - Зайти на сайт: ![image](https://github.com/user-attachments/assets/3ac8c7b4-078d-4389-8593-83af11a26c59)
+     - ```docker container rm --force linux_tweet_app``` ![image](https://github.com/user-attachments/assets/255a6e63-fc9d-4b92-a268-81b6217f0f8a)
+     - ``` docker container run --detach --publish 80:80 --name linux_tweet_app --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html $DOCKERID/linux_tweet_app:1.0``` ![image](https://github.com/user-attachments/assets/5f9549cc-029c-495a-b5ac-74f52e06edc4)
+     - Запущенный веб-сайт: ![image](https://github.com/user-attachments/assets/33dbd69b-3905-4751-ba88-d438c2f2891c)
+     - ```cp index-new.html index.html``` ![image](https://github.com/user-attachments/assets/fd446949-dd82-4ff9-b1ad-5d019d204ce3)
+     - Запущенный веб-сайт после изменений: ![image](https://github.com/user-attachments/assets/4710b853-ba8c-449a-95ae-fc0b7d527179)
+     - ``` docker image build --tag $DOCKERID/linux_tweet_app:2.0 .``` ![image](https://github.com/user-attachments/assets/241436d5-4b7b-48f3-9edd-c6343ea455b3)
+     - ```docker image ls``` ![image](https://github.com/user-attachments/assets/ecd9c9ca-a3b9-4040-9b2b-0b016cbce2d6)
+     - ```docker container run --detach --publish 80:80 --name linux_tweet_app $DOCKERID/linux_tweet_app:2.0``` ![image](https://github.com/user-attachments/assets/540e6ae4-7547-4323-b99b-32073971e60b)
+     - ``` docker container run --detach --publish 8080:80 --name old_linux_tweet_app $DOCKERID/linux_tweet_app:1.0``` ![image](https://github.com/user-attachments/assets/75efc24d-259a-4c9d-ab2c-36ce0ec370e1)
+     - ``` docker image ls -f reference="$DOCKERID/*"``` ![image](https://github.com/user-attachments/assets/62c356de-aa0c-4195-845c-ee44d551c722)
+     - ``` docker login``` ![image](https://github.com/user-attachments/assets/c0f07a97-925c-4f64-984d-4d20fb332f85)
+     - ``` docker image push $DOCKERID/linux_tweet_app:1.0``` ![image](https://github.com/user-attachments/assets/05476bbd-de65-466b-8f4e-a871fc3f26b0)
+     - ``` docker image push $DOCKERID/linux_tweet_app:2.0```  ![image](https://github.com/user-attachments/assets/81667e29-c8d8-4c3d-9b6f-3f1b14cd61f8)
+     - DockerHub: ![image](https://github.com/user-attachments/assets/2d4898fb-6fd1-4a00-b1d8-213bc9744977)
+  2) Application Containerization and Microservice Orchestration.
+     - ```git clone https://github.com/ibnesayeed/linkextractor.git && cd linkextractor && git checkout demo``` ![image](https://github.com/user-attachments/assets/74555e93-553d-47e4-93fe-dcf511e0df97)
+     - ```git checkout step0 && tree``` ![image](https://github.com/user-attachments/assets/1fad1311-d069-4bdb-ac82-6406321c6d8c)
+     - ```cat linkextractor.py``` ![image](https://github.com/user-attachments/assets/5a4dedae-69f0-4e35-a783-c170c72b1686)
+     - ```./linkextractor.py http://example.com/``` ![image](https://github.com/user-attachments/assets/95c9f6ec-7ec2-489e-b0be-3e18981dfb79)
+     - ```ls -l linkextractor.py``` ![image](https://github.com/user-attachments/assets/7c48d480-fda1-4f77-87e1-530f3f7c2b0f)
+     - ```python3 linkextractor.py``` ![image](https://github.com/user-attachments/assets/b407364a-2599-4ed0-a339-65a18fc7ab6d)
+     - ```git checkout step1 && tree``` ![image](https://github.com/user-attachments/assets/dd1c45de-fc2d-4639-b667-956715c0fcd1)
+     - ```cat Dockerfile``` ![image](https://github.com/user-attachments/assets/6c13196d-effe-4c62-99e0-46f147b3b316)
+     - ```docker image build -t linkextractor:step1 .``` ![image](https://github.com/user-attachments/assets/04610472-715b-4427-91cb-685f87e19ee7)
+     - ```docker container run -it --rm linkextractor:step1 http://example.com/``` 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
