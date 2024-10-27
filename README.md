@@ -220,6 +220,34 @@
      - ```docker stack services voting_stack``` ![image](https://github.com/user-attachments/assets/0c977c84-b7ee-410c-8e62-ed88b9ec1c19)
      - ```docker service ps voting_stack_vote``` ![image](https://github.com/user-attachments/assets/c2d8427d-b57b-4735-b4a7-afd024544a4a)
 
+  СЛЕДУЮЩАЯ ДОМАШНЯЯ РАБОТА:
+  1) Запушить образ с созданным приложением в ЛР5 (MariaDB, Flask) в Docker Hub:  ```docker login && docker tag lr5-web olivka07/lr5-web:v1.0 && docker push olivka07/lr5-web:v1.0``` ![image](https://github.com/user-attachments/assets/dccab318-e87a-44aa-bb4b-f2a54a0a4aeb) https://hub.docker.com/repository/docker/olivka07/lr5-web/general
+  2) Поднять свой собственный локальный реестр: ```docker run -d -p 5000:5000 registry:2``` ![image](https://github.com/user-attachments/assets/62bb699b-8a12-4e42-b663-0cfe56302d03)
+  3) Выгрузка образа в локальный реестр: ```docker tag "olivka07/lr5-web:v1.0" "localhost:5000/lr5-web:v1.0" && docker push localhost:5000/lr5-web:v1.0``` ![image](https://github.com/user-attachments/assets/fee4af9e-6567-4b2b-a290-0fa141f14dd9)
+  4) Получение точной копии из локального реестра по хэшу: ```docker pull localhost:5000/lr5-web@sha256:\sha256:001c5343d3a00558338134c7a18a7a25221ddfcb6e1471822f8df58279ea1b0d``` ![image](https://github.com/user-attachments/assets/33c0002e-e032-479f-89f4-a88f058412b6)
+  5) Инициализация Swarm Mode: ```docker swarm init``` ![image](https://github.com/user-attachments/assets/92998bfc-3d77-430c-93cf-fedf31b5a543)
+  6) Создание сервиса: ```docker service create --name registry --publish published=5000,target=5000 registry:2```![image](https://github.com/user-attachments/assets/64636d60-9bd1-40f9-ba61-e2914d6fdc35)
+  7) Изменение docker-compose.yml (добавление в сервис web базового образа: ```image: localhost:5000/lr5-web:v1.0``` и изменение рабочих портов на 8000, так как 5000 занят локальным реестром.
+  8) Запуск контейнеров: ```docker-compose up -d``` ![image](https://github.com/user-attachments/assets/81faad22-3471-41ad-93ba-707daf885adf)
+  9) Обращение к приложению: ```curl localhost:8000``` ![image](https://github.com/user-attachments/assets/9b9cbf52-7bc0-4c3e-807c-1a8ec391fbdc)
+  10) Остановка приложения: ```docker compose down --volumes``` ![image](https://github.com/user-attachments/assets/066c9daf-fafb-4b63-9e0b-2c4a6b0bcb84)
+  11) Запушить: ```docker-compose push``` ![image](https://github.com/user-attachments/assets/66d76bcb-7c89-4683-b0d2-8e47cb8084dd)
+  12) ```docker stack deploy --compose-file docker-compose.yml mystack``` ![image](https://github.com/user-attachments/assets/f50d53de-7bf3-4ee4-a311-1595ffb50d52)
+  13) ```docker stack services mystack```  ![image](https://github.com/user-attachments/assets/3601efc8-ea78-439e-a698-5e1de8fb656d)
+  14) ```docker stack rm mystack``` ![image](https://github.com/user-attachments/assets/75de0103-f9a4-44ed-8ece-abb55919b545)
+  15) ```docker service rm registry``` ![image](https://github.com/user-attachments/assets/c2000afd-1dae-407a-8cf6-c2f5b772b1ff)
+  16) ```docker swarm leave --force``` ![image](https://github.com/user-attachments/assets/44402f61-fa0d-49c8-8d60-30c2eae209e9)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
